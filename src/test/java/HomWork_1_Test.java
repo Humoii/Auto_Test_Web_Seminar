@@ -1,9 +1,9 @@
+
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-
 
 import java.io.*;
 import java.time.Duration;
@@ -34,14 +34,14 @@ public class HomWork_1_Test extends TestElement{
         button.click();
         List<WebElement> searchElement = driver.findElements(By.partialLinkText("GB202307470f77"));
         Assertions.assertEquals(searchElement.size(), 1);
-        Assertions.assertEquals(driver.getCurrentUrl(),"https://test-stand.gb.ru/admin/student?page=1&limit=10");
+        Assertions.assertEquals(driver.getCurrentUrl(),"https://test-stand.gb.ru/admin/student");
     }
 
     @Test
     void creating_DummyTest() {
         WebElement button = driver.findElement(By.xpath("//*[@id='create-btn']"));
         button.click();
-        List<WebElement> searchElement = driver.findElements(By.xpath("//*[@slot='title']"));
+        List<WebElement> searchElement = driver.findElements(By.xpath("/html/body/div/main/div/div/div[3]/div[2]/div/div[1]/h2/span"));
         Assertions.assertEquals(searchElement.size(),1);
     }
 
@@ -58,7 +58,6 @@ public class HomWork_1_Test extends TestElement{
             s = s+((char)num);
         }
         num = Integer.valueOf(s);
-        System.out.println(num);
         PrintWriter writer = new PrintWriter(file);
         writer.write(String.valueOf(num+1));
         writer.close();
@@ -75,6 +74,6 @@ public class HomWork_1_Test extends TestElement{
 
     @AfterAll
     static  void  closeApp(){
-        driver.quit();
+//        driver.quit();
     }
 }
