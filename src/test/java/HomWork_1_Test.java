@@ -30,7 +30,7 @@ public class HomWork_1_Test extends TestElement{
     }
 
     @Test
-    void testAuthorization() {
+    void testAuthorization() throws InterruptedException {
         WebElement loginTest = driver.findElement(By.xpath("//*[@type='text']"));// через XPath
         WebElement pass = driver.findElement(By.xpath("//*[@type='password']"));// через XPath
 //        WebElement usernameField = driver.findElement(By.cssSelector("form#login input[type='text']"));// через cssSelector
@@ -42,7 +42,8 @@ public class HomWork_1_Test extends TestElement{
         button.click();
         List<WebElement> searchElement = driver.findElements(By.partialLinkText("GB202307470f77"));
         Assertions.assertEquals(searchElement.size(), 1);
-        Assertions.assertEquals(driver.getCurrentUrl(),"https://test-stand.gb.ru/admin/student");
+        Thread.sleep(1000L);
+        Assertions.assertEquals(driver.getCurrentUrl(),"https://test-stand.gb.ru/admin/student?page=1&limit=10");
     }
 
     @Test
@@ -74,8 +75,9 @@ public class HomWork_1_Test extends TestElement{
         loginDummy.sendKeys(uniqueLogin);
         WebElement buttonSAVE = driver.findElement(By.xpath("//*[@class=\"button mdc-button mdc-button--raised mdc-ripple-upgraded\"]"));
         buttonSAVE.click();
-        Thread.sleep(5000L);
+        Thread.sleep(2000L);
         buttonSAVE.click();
+        Thread.sleep(2000L);
         List<WebElement> provided = driver.findElements(By.xpath("//*[@id=\"upsert-item\"]/div[5]/div"));
         Assertions.assertEquals(provided.size(),1);
     }
