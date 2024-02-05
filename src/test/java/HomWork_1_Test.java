@@ -83,6 +83,6 @@ public class HomWork_1_Test extends TestElement{
 
     @AfterAll
     static  void  closeApp(){
-//        driver.quit();
+        driver.quit();
     }
 }
