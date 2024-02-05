@@ -10,7 +10,6 @@ import java.time.Duration;
 import java.util.List;
 
 public class HomWork_1_Test extends TestElement{
-
     @BeforeAll
     static void initElement(){
         ChromeOptions chromeOptions = new ChromeOptions();
@@ -75,7 +74,7 @@ public class HomWork_1_Test extends TestElement{
         loginDummy.sendKeys(uniqueLogin);
         WebElement buttonSAVE = driver.findElement(By.xpath("//*[@class=\"button mdc-button mdc-button--raised mdc-ripple-upgraded\"]"));
         buttonSAVE.click();
-        Thread.sleep(1000L);
+        Thread.sleep(5000L);
         buttonSAVE.click();
         List<WebElement> provided = driver.findElements(By.xpath("//*[@id=\"upsert-item\"]/div[5]/div"));
         Assertions.assertEquals(provided.size(),1);
