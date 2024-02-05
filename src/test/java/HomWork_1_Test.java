@@ -21,6 +21,15 @@ public class HomWork_1_Test extends TestElement{
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }
 
+    @BeforeEach
+    void startTest(){
+        System.out.println("Начало теста");
+    }
+    @AfterEach
+    void endTest(){
+        System.out.println("Конец теста");
+    }
+
     @Test
     void testAuthorization() {
         WebElement loginTest = driver.findElement(By.xpath("//*[@type='text']"));// через XPath
