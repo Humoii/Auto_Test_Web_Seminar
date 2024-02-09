@@ -1,6 +1,7 @@
-import org.openqa.selenium.By;
+package HomeWork_1_Test;
+
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+
 
 public abstract class TestElement {
     static WebDriver driver;

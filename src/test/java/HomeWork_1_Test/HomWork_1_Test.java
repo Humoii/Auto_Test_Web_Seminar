@@ -1,3 +1,4 @@
+package HomeWork_1_Test;
 
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
@@ -9,7 +10,7 @@ import java.io.*;
 import java.time.Duration;
 import java.util.List;
 
-public class HomWork_1_Test extends TestElement{
+public class HomWork_1_Test extends TestElement {
     @BeforeAll
     static void initElement(){
         ChromeOptions chromeOptions = new ChromeOptions();
@@ -59,7 +60,7 @@ public class HomWork_1_Test extends TestElement{
         WebElement firstName = driver.findElement(By.xpath("//*[@class='mdc-text-field__input']"));
         firstName.sendKeys("Sergey");
         WebElement loginDummy = driver.findElement(By.xpath("//*[@id=\"upsert-item\"]/div[5]/label/input"));
-        File file = new File("C:\\Users\\serge\\Desktop\\Auto_test_web_seminar\\src\\test\\java\\uniqueLogin.txt");
+        File file = new File("C:\\Users\\serge\\Desktop\\Auto_test_web_seminar\\src\\test\\java\\HomeWork_1_Test\\uniqueLogin.txt");
         FileReader reader = new FileReader(file);
         int num;
         String s = "";
