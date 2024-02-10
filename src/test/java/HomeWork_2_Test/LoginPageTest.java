@@ -11,16 +11,6 @@ import java.util.List;
 
 public class LoginPageTest extends TestElement{
 
-    @BeforeEach
-    void startChromeDriver(){
-        authorization();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-    }
-    @AfterEach
-    void endChromeDriver(){
-        driver.quit();
-    }
-
     @Test
     void loginTest() throws InterruptedException {
 

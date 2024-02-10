@@ -14,20 +14,13 @@ import java.time.Duration;
 import java.util.List;
 
 public class MAinPageTest extends TestElement{
-    @BeforeEach
-    void startChromeDriver(){
-        authorization();
-        LoginPage loginPage = new LoginPage(driver);
-        loginPage.loginInSystem(login, password);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-    }
-    @AfterEach
-    void endChromeDriver(){
-        driver.quit();
-    }
 
     @Test
     void editingDummyFirstNameTest() throws IOException, InterruptedException {
+
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.loginInSystem(login, password);
+
         File file = new File("C:\\Users\\serge\\Desktop\\Auto_test_web_seminar\\src\\test\\java\\HomeWork_2_Test\\firstName.txt");
         FileReader reader = new FileReader(file);
         int num;
@@ -50,6 +43,10 @@ public class MAinPageTest extends TestElement{
     }
     @Test
     void dummyCredentialsTest(){
+
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.loginInSystem(login, password);
+
         MainPage mainPage = new MainPage(driver);
         mainPage.dummyCredentials();
         List<WebElement> dummyCredentialsTitle = driver.findElements(By.xpath("//*[@id=\"simple-title\"]"));
