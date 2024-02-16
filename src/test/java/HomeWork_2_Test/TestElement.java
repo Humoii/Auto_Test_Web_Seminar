@@ -1,11 +1,16 @@
 package HomeWork_2_Test;
 
+import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.time.Duration;
 
 public abstract class TestElement {
@@ -17,7 +22,7 @@ public abstract class TestElement {
 
         ChromeOptions chromeOptions = new ChromeOptions();
         driver = new ChromeDriver(chromeOptions);
-        chromeOptions.addArguments("--start-maximized");// режим полного экрана
+//        chromeOptions.addArguments("--start-maximized");// режим полного экрана
         //        chromeOptions.addArguments("--headless"); //неявная функция
         driver.get("https://test-stand.gb.ru/login");
     }

@@ -13,7 +13,6 @@ public class LoginPageTest extends TestElement {
     @Test
     void loginTest(){
         LoginPage loginPage = Selenide.page(LoginPage.class);
-
         loginPage.loginInSystem(login, password);
 
         SelenideElement nameLoginPage = $x("//*[@id=\"app\"]/main/nav/ul/li[3]/a[text()='Hello, '][text()='GB202307470f77']");

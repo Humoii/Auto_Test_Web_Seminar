@@ -10,13 +10,12 @@ import java.util.List;
 public class LoginPageTest extends TestElement{
 
     @Test
-    void loginTest() throws InterruptedException {
+    void loginTest(){
 
         LoginPage loginPage = new LoginPage(driver);
         loginPage.loginInSystem(login, password);
 
         List<WebElement> searchElement = driver.findElements(By.partialLinkText("Hello, GB202307470f77"));
-        System.out.println(searchElement);
         Assertions.assertEquals(searchElement.size(), 1);
 //        Thread.sleep(1000L);//явное ожидание для прогрузки страницы, иначи тест падает на проверке URL
         Assertions.assertEquals(driver.getCurrentUrl(),"https://test-stand.gb.ru/admin/student?page=1&limit=10");
