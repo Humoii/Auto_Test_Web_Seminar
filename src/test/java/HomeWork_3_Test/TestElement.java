@@ -15,6 +15,12 @@ public abstract class TestElement {
     String password = "bd86adca8d";
 
     private void authorization(){
+
+        Configuration.remote = "http://localhost:4444/wd/hub";
+//        Configuration.browser = "firefox";
+        Configuration.browser = "chrome";
+        Configuration.browserVersion = "121.0";
+//        Configuration.browser = "opera";//TODO не работает OPERA .brawser
         Selenide.open("https://test-stand.gb.ru/login");
         driver = WebDriverRunner.getWebDriver();
     }
@@ -25,8 +31,9 @@ public abstract class TestElement {
     }
     @AfterEach
     void endChromeDriver(){
+        Selenide.sleep(10000L);
 //        driver.quit();
-        Configuration.holdBrowserOpen = true;//оставляет открытым браузер
+//        Configuration.holdBrowserOpen = true;//оставляет открытым браузер
 //        WebDriverRunner.closeWebDriver();// закрывает браузер
     }
 }
