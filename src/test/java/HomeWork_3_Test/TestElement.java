@@ -7,6 +7,10 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
 
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.time.Duration;
 
 public abstract class TestElement {
@@ -17,7 +21,7 @@ public abstract class TestElement {
     private void authorization(){
 
         Configuration.remote = "http://localhost:4444/wd/hub";
-////        Configuration.browser = "firefox";
+//        Configuration.browser = "firefox";
         Configuration.browser = "chrome";
 //        Configuration.browserVersion = "121.0";
 //        Configuration.browser = "opera";//TODO не работает OPERA .brawser
@@ -29,10 +33,28 @@ public abstract class TestElement {
         authorization();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }
-//    @AfterEach
-//    void endChromeDriver(){
+    @AfterEach
+    void endChromeDriver(){
+        Selenide.sleep(5000L);
 //        driver.quit();
 //        Configuration.holdBrowserOpen = true;//оставляет открытым браузер
 //        WebDriverRunner.closeWebDriver();// закрывает браузер
-//    }
+    }
+
+    public String uniqueDateFile (String pathFile) throws IOException {
+        File file = new File(pathFile);
+        FileReader reader = new FileReader(file);
+        int num;
+        StringBuilder uniqueDate = new StringBuilder();
+        while ((num = reader.read()) != -1) {
+            uniqueDate.append((char) num);
+        }
+        String date = String.valueOf(uniqueDate);
+        date = String.valueOf(Integer.parseInt(date) + 1);
+        PrintWriter writer = new PrintWriter(file);
+        writer.write(date);
+        writer.close();
+        reader.close();
+        return String.valueOf(uniqueDate);
+    }
 }
