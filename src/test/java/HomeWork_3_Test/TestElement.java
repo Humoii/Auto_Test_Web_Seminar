@@ -12,6 +12,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.Duration;
+import java.util.HashMap;
+import java.util.Map;
 
 public abstract class TestElement {
     static WebDriver driver;
@@ -24,6 +26,10 @@ public abstract class TestElement {
 //        Configuration.browser = "firefox";
         Configuration.browser = "chrome";
 //        Configuration.browserVersion = "121.0";
+        Map<String, Object> options = new HashMap<>();
+        options.put("enableVNC", true);
+        options.put("enableLog", true);
+        Configuration.browserCapabilities.setCapability("selenoid:options", options);
 //        Configuration.browser = "opera";//TODO не работает OPERA .brawser
         Selenide.open("https://test-stand.gb.ru/login");
         driver = WebDriverRunner.getWebDriver();
@@ -35,7 +41,7 @@ public abstract class TestElement {
     }
     @AfterEach
     void endChromeDriver(){
-        Selenide.sleep(5000L);
+        Selenide.sleep(15000L);
 //        driver.quit();
 //        Configuration.holdBrowserOpen = true;//оставляет открытым браузер
 //        WebDriverRunner.closeWebDriver();// закрывает браузер

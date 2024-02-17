@@ -18,16 +18,20 @@ public abstract class TestElement {
     String login = "GB202307470f77";
     String password = "bd86adca8d";
 
-    private void authorization(){
-
-        ChromeOptions chromeOptions = new ChromeOptions();
-        driver = new ChromeDriver(chromeOptions);
+    private void authorization() throws MalformedURLException {
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setBrowserName("chrome");
+        capabilities.setVersion("121");
+        capabilities.setCapability("enableVnc", true);
+        driver = new RemoteWebDriver(new URL("http://localhost:4444/"), capabilities);
+        driver.get("https://test-stand.gb.ru/login");
+//        ChromeOptions chromeOptions = new ChromeOptions();
+//        driver = new ChromeDriver(chromeOptions);
 //        chromeOptions.addArguments("--start-maximized");// режим полного экрана
         //        chromeOptions.addArguments("--headless"); //неявная функция
-        driver.get("https://test-stand.gb.ru/login");
     }
     @BeforeEach
-    void startChromeDriver(){
+    void startChromeDriver() throws MalformedURLException {
         authorization();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }

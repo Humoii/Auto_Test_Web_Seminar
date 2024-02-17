@@ -30,7 +30,7 @@ public class ProfilePageTest extends TestElement{
         profilePage.save();
         profilePage.close();
 
-        Selenide.sleep(1000L);
+        Selenide.sleep(2000L);
         SelenideElement dateOfBirth = $x("//*[@id=\"app\"]/main/div/div/div[1]/div/div[2]/div/div[2]/div[2]");
         Assertions.assertEquals(fullDate, dateOfBirth.getText());
     }
